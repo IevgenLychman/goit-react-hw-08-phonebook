@@ -26,7 +26,7 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  const isRefreshing = useSelector(getIsRefreshing);
+  // const isRefreshing = useSelector(getIsRefreshing);
 
   return (
     <div
