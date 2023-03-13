@@ -1,13 +1,12 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect, lazy } from 'react';
 import { refreshUser } from 'redux/auth/operations';
 import { PublicRoute } from './PublicRoute';
 import { PrivatRoute } from './PrivateRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getIsRefreshing } from 'redux/auth/selectors';
 
 const Home = lazy(() => import('Pages/HomePage/HomePage'));
 const ContactDetails = lazy(() =>
@@ -25,8 +24,6 @@ export const App = () => {
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-
-  // const isRefreshing = useSelector(getIsRefreshing);
 
   return (
     <div

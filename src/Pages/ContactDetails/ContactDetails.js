@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { DetailsContainer, Img, Text } from './ContactDetails.styled';
+import { DetailsContainer, Text } from './ContactDetails.styled';
 import { getContacts } from 'redux/contacts/selectors';
 
 const ContactDetails = () => {

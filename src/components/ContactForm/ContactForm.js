@@ -12,29 +12,23 @@ export const ContactForm = ({ closeModal }) => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
-  console.log(contacts);
-
   const handleSubmit = e => {
     e.preventDefault();
 
     const data = new FormData(e.currentTarget);
-
-    const newName = {
-      name: data.get('name'),
-      number: data.get('number'),
-    };
-
-
+    const newName = { name: data.get('name'), number: data.get('number') };
+    const Name = newName.name.toLowerCase();
 
     const nameExist = contacts
       .map(contact => contact.name.toLowerCase())
-      .some(el => el === newName.name);
+      .some(el => el === Name);
 
     if (nameExist) {
       toast.error('A contact with that name already exists.');
+    } else {
+      dispatch(addContact(newName));
     }
 
-    dispatch(addContact(newName));
     e.currentTarget.reset();
     closeModal();
   };
